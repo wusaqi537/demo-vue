@@ -1,44 +1,38 @@
-/*
- * @Description:
- * @Version: 1.0
- * @Autor: Li Cheng
- * @Date: 2024-06-25 14:15:23
- * @LastEditors: Li Cheng
- * @LastEditTime: 2024-06-25 16:26:35
- */
 import { createWebHistory, createRouter } from 'vue-router';
 
 import Base from '@/views/base.vue';
 import List from '@/views/list.vue';
 import Computed from '@/views/computeds.vue';
-import Hello from '@/views/HelloWorld.vue';
-import Form from '@/views/formModel.vue';
-// import Life from '@/views/life.vue';
+import HelloWorld from '@/views/HelloWorld.vue';
+import FormModel from '@/views/formModel.vue';
+import Life from '@/views/life.vue';
+import User from '@/views/user.vue';
+import Father from '@/views/father.vue';
+import Son from '@/views/son.vue';
 
 const routes = [
   { path: '/', redirect: '/base' },
   { path: '/base', component: Base },
-  { path: '/list', component: List },
+  { path: '/list', component: List }, // 修改其中一个路径以避免重复
   { path: '/computed', component: Computed },
-  { path: '/list', component: List },
-  { path: '/hello', component: Hello },
-  { path: '/form', component: Form },
-  { path: '/life', component: () => import('@/views/life.vue') },
+  { path: '/hello', component: HelloWorld },
+  { path: '/form', component: FormModel },
+  { path: '/life', component: Life },
   {
     path: '/user/:id',
     name: 'user',
     meta: {
       title: '用户详情'
     },
-    component: () => import('@/views/user.vue')
+    component: User
   },
   {
     path: '/fa',
-    component: () => import('@/views/father.vue'),
+    component: Father,
     children: [
       {
         path: 'son',
-        component: () => import('@/views/son.vue')
+        component: Son
       }
     ]
   }
